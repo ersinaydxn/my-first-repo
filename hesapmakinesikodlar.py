@@ -1,14 +1,9 @@
-#Hesap Makinesi Kodlama
-#Terminalde ui dosyasının konumuna cd ile git.
-#pyuic5 hesapmakinesi.ui -o hesapmakinesi.py   terminalde yazarak xml dosyasını py dosyasına çeviriyoruz.
-#py dosyasını importluyoruz. ui mainwindowu alsak yetiyor asıl sınıf o
-
 import sys
 from PyQt5 import QtWidgets as qtw
 from hesapmakinesi import Ui_MainWindow
 
 
-#Uygulamadaki verileri almak için alttaki classı kurduk
+
 class Uygulama(qtw.QMainWindow):
     sayi=None
     sayi2=False
@@ -16,7 +11,7 @@ class Uygulama(qtw.QMainWindow):
         super().__init__()
         self.ui=Ui_MainWindow()
         self.ui.setupUi(self)
-        self.ui.sifir.clicked.connect(self.basmak)                             #self.ui.hangi nesneyi çağırdığın . clicked  buton olduğu için . connect içine fonksiyon çağırıyoruz.
+        self.ui.sifir.clicked.connect(self.basmak)                             
         self.ui.bir.clicked.connect(self.basmak)
         self.ui.iki.clicked.connect(self.basmak)
         self.ui.uc.clicked.connect(self.basmak)
@@ -44,9 +39,9 @@ class Uygulama(qtw.QMainWindow):
         self.ui.esittir.setCheckable(True)
 
     def basmak(self):
-        buton=self.sender()                                 #Basılan her bilgiyi buton değişkenine gönderdik
+        buton=self.sender()                                 
         if ((self.sayi2) and (self.ui.esittir.isChecked())):
-            self.ui.sonuc.setText(format(float(buton.text()),'.15g'))  # Set text ile ekrana basılan tuşu float ve format şeklinde gönderdik 15g dediğimiz 0'ı kaldırıyor ortadan.
+            self.ui.sonuc.setText(format(float(buton.text()),'.15g')) 
             self.sayi2=True
             self.ui.esittir.setChecked(False)
 
@@ -79,7 +74,7 @@ class Uygulama(qtw.QMainWindow):
         self.ui.sonuc.setText("0")
         self.ui.toplama.setChecked(False)
         self.ui.cikarma.setChecked(False)
-        self.ui.carpma.setChecked(False)                        #Temizleye bastıktan sonra bu işaretlere basarsan o an işlem yapmasın diye döndürdük.
+        self.ui.carpma.setChecked(False)                      
         self.ui.bolme.setChecked(False)
         self.ui.esittir.setChecked(False)
 
